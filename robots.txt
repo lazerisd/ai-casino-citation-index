@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lazerisd.github.io/ai-casino-citation-index/sitemap.xml

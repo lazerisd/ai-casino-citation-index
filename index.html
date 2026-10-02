@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Which websites do AI engines cite when asked where to gamble online? 80 answers, 535 citations, eight regulated jurisdictions, every operator cross-checked against the official regulator register.">
+<link rel="canonical" href="https://lazerisd.github.io/ai-casino-citation-index/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI Casino Citation Index">
+<meta property="og:description" content="Of the forty most-cited sources, none is an operator's own website. 41% of citations go to sports media and regional newspapers, not gambling affiliates.">
+<meta property="og:url" content="https://lazerisd.github.io/ai-casino-citation-index/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="author" content="Dominykas">
+<title>AI Casino Citation Index</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F2F5F5; --surface:#FFFFFF; --surface-2:#E9EEEE;
+    --ink:#0E1416; --ink-2:#516166; --ink-3:#78888D;
+    --rule:#D3DCDC; --rule-strong:#B4C2C2;
+    --accent:#14605B;
+    --c-affiliate:#14605B; --c-sports:#3A6B92; --c-news:#92651F;
+    --c-regulator:#67486F; --c-trade:#4B7742;
+    --shadow:0 1px 2px rgba(14,20,22,.06);
+    --serif:"Newsreader",Georgia,"Times New Roman",serif;
+    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#0C1113; --surface:#141A1D; --surface-2:#1B2327;
+      --ink:#E6EDEE; --ink-2:#9BAAAF; --ink-3:#74858A;
+      --rule:#25302F; --rule-strong:#35423F;
+      --accent:#54AFA6;
+      --c-affiliate:#54AFA6; --c-sports:#77A8CE; --c-news:#C99A45;
+      --c-regulator:#A98BB0; --c-trade:#84B379;
+      --shadow:0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0C1113; --surface:#141A1D; --surface-2:#1B2327;
+    --ink:#E6EDEE; --ink-2:#9BAAAF; --ink-3:#74858A;
+    --rule:#25302F; --rule-strong:#35423F;
+    --accent:#54AFA6;
+    --c-affiliate:#54AFA6; --c-sports:#77A8CE; --c-news:#C99A45;
+    --c-regulator:#A98BB0; --c-trade:#84B379;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1000px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+  a{color:var(--accent);text-underline-offset:2px}
+  h1,h2,h3{text-wrap:balance;margin:0}
+
+  /* masthead */
+  .masthead{border-bottom:2px solid var(--ink);padding-block:40px 18px;margin-bottom:8px}
+  .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+           color:var(--ink-2);margin:0 0 14px}
+  h1{font-family:var(--serif);font-size:clamp(38px,7vw,64px);line-height:1.02;font-weight:600;
+     letter-spacing:-.02em}
+  .standfirst{font-family:var(--serif);font-size:clamp(17px,2.2vw,21px);line-height:1.45;
+              color:var(--ink-2);max-width:60ch;margin-top:16px;font-style:italic}
+  .runline{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;
+           font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+  .runline b{color:var(--ink);font-weight:500}
+
+  section{margin-top:56px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--rule);
+            padding-bottom:8px;margin-bottom:22px;flex-wrap:wrap}
+  h2{font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-.01em}
+  .sec-note{font-size:13px;color:var(--ink-3);margin-left:auto}
+
+  /* finding */
+  .findings{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
+            background:var(--rule);border:1px solid var(--rule)}
+  .finding{background:var(--surface);padding:22px 20px}
+  .finding .num{font-family:var(--serif);font-size:46px;line-height:1;font-weight:600;
+                letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .finding .num small{font-size:22px;color:var(--ink-2)}
+  .finding p{margin:10px 0 0;font-size:14px;line-height:1.5;color:var(--ink-2)}
+
+  /* category bar */
+  .catbar{display:flex;height:34px;border:1px solid var(--rule-strong);overflow:hidden}
+  .catbar span{display:block}
+  .catkey{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:14px;font-size:13px}
+  .catkey div{display:flex;align-items:center;gap:8px}
+  .swatch{width:11px;height:11px;flex:none;border-radius:2px}
+  .catkey b{font-family:var(--mono);font-size:12px;font-weight:500}
+
+  /* ranked bars */
+  .ranked{display:grid;gap:5px}
+  .row{display:grid;grid-template-columns:22px minmax(150px,200px) 1fr 34px;gap:12px;align-items:center}
+  .rank{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:right}
+  .dom{font-family:var(--mono);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .track{background:var(--surface-2);height:15px;position:relative}
+  .track i{display:block;height:100%}
+  .val{font-family:var(--mono);font-size:12px;font-variant-numeric:tabular-nums;color:var(--ink-2)}
+
+  /* jurisdiction grid */
+  .jgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+  .jcard{background:var(--surface);border:1px solid var(--rule);padding:18px 18px 16px;box-shadow:var(--shadow)}
+  .jcard h3{font-family:var(--sans);font-size:15px;font-weight:600;display:flex;
+            justify-content:space-between;align-items:baseline;gap:10px}
+  .jcard h3 em{font-family:var(--mono);font-size:11px;font-style:normal;color:var(--ink-3);
+               text-transform:uppercase;letter-spacing:.08em}
+  .reg{font-size:12px;color:var(--ink-3);margin:4px 0 14px;font-family:var(--mono)}
+  .jlist{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+  .jlist li{display:grid;grid-template-columns:7px 1fr auto;gap:9px;align-items:center;font-size:13px}
+  .jlist .dot{width:7px;height:7px;border-radius:50%}
+  .jlist .d{font-family:var(--mono);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .jlist .n{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);font-variant-numeric:tabular-nums}
+
+  /* licence */
+  .lic{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .licbox{background:var(--surface);border:1px solid var(--rule);padding:20px}
+  .licbox h3{font-family:var(--sans);font-size:15px;font-weight:600;margin-bottom:4px}
+  .licbox .meta{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-bottom:14px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-family:var(--mono);font-size:11.5px;padding:3px 8px;border:1px solid var(--rule-strong);
+        background:var(--surface-2);color:var(--ink-2)}
+  .chip.ok{border-color:var(--c-affiliate);color:var(--c-affiliate)}
+  .chip.out{border-color:var(--c-news);color:var(--c-news)}
+
+  /* prose */
+  .prose{max-width:66ch;font-size:15px;color:var(--ink-2)}
+  .prose p{margin:0 0 14px}
+  .prose strong{color:var(--ink);font-weight:600}
+  ul.tight{margin:0;padding-left:20px;font-size:14.5px;color:var(--ink-2)}
+  ul.tight li{margin-bottom:9px}
+  .srcs{columns:2;column-gap:30px;font-size:13px;font-family:var(--mono);color:var(--ink-2)}
+  .srcs a{display:block;margin-bottom:7px;break-inside:avoid;word-break:break-all}
+  footer{margin-top:56px;border-top:1px solid var(--rule);padding-top:18px;
+         font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+  @media (max-width:560px){
+    .row{grid-template-columns:20px 1fr 30px}
+    .row .track{display:none}
+    .srcs{columns:1}
+  }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+
+<header class="masthead">
+  <p class="eyebrow">Independent measurement · Edition 01</p>
+  <h1>AI Casino Citation Index</h1>
+  <p class="standfirst">When someone asks an AI assistant where to gamble online, which websites does it read to answer? We asked, across eight regulated jurisdictions, and logged every source.</p>
+  <div class="runline">
+    <span><b>80</b> answers logged</span>
+    <span><b>8</b> jurisdictions, all licence-checked</span>
+    <span><b>2</b> engines · Perplexity, GPT-4o</span>
+    <span><b>196</b> distinct domains cited</span>
+    <span><b>535</b> total citations</span>
+    <span>Collected <b>30 Sep 2026</b></span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head"><h2>What the data shows</h2></div>
+  <div class="findings">
+    <div class="finding">
+      <div class="num">0<small> / 40</small></div>
+      <p>Of the forty most-cited sources, <strong>not one is a casino operator's own website</strong>. AI engines answer about operators without reading them.</p>
+    </div>
+    <div class="finding">
+      <div class="num">29<small>%</small></div>
+      <p>Of all citations go to <strong>sports and general news media</strong> — newspapers and scores sites, not gambling specialists.</p>
+    </div>
+    <div class="finding">
+      <div class="num">7<small>%</small></div>
+      <p>Go to the <strong>regulators themselves</strong>. Official licence registers are cited, but rarely, and only in strictly regulated markets.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>Who gets cited</h2>
+    <span class="sec-note">535 citations by source type</span>
+  </div>
+  <div class="catbar" role="img" aria-label="Affiliate and comparison sites 58 percent, sports media 18 percent, news media 13 percent, regulators 6 percent, trade press 5 percent">
+    <span style="width:59.4%;background:var(--c-affiliate)"></span>
+    <span style="width:16.1%;background:var(--c-sports)"></span>
+    <span style="width:12.7%;background:var(--c-news)"></span>
+    <span style="width:6.7%;background:var(--c-regulator)"></span>
+    <span style="width:5.0%;background:var(--c-trade)"></span>
+  </div>
+  <div class="catkey">
+    <div><span class="swatch" style="background:var(--c-affiliate)"></span>Affiliate &amp; comparison <b>318 · 59%</b></div>
+    <div><span class="swatch" style="background:var(--c-sports)"></span>Sports media <b>86 · 16%</b></div>
+    <div><span class="swatch" style="background:var(--c-news)"></span>News media <b>68 · 13%</b></div>
+    <div><span class="swatch" style="background:var(--c-regulator)"></span>Regulators <b>36 · 7%</b></div>
+    <div><span class="swatch" style="background:var(--c-trade)"></span>Trade press <b>27 · 5%</b></div>
+  </div>
+  <p class="prose" style="margin-top:20px">Affiliate sites still take the majority of citations, which is the result the industry would expect. The surprise sits in the other <strong>41%</strong>: a sports-results site and two regional American newspapers are cited more often than most established casino affiliates, and a business-to-business trade publication written for operators — not players — is the third most-cited source on the list.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>Twenty most-cited sources</h2>
+    <span class="sec-note">Bars show citation count; colour shows source type</span>
+  </div>
+  <div class="ranked" id="ranked"></div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>By jurisdiction</h2>
+    <span class="sec-note">Top sources cited for each market</span>
+  </div>
+  <div class="jgrid" id="jgrid"></div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <h2>Recommended versus licensed</h2>
+    <span class="sec-note">All eight markets cross-referenced</span>
+  </div>
+  <p class="prose">A citation tells you what the model read. It does not tell you whether the operator it went on to name is actually permitted to take that player's money. We pulled the licensed-operator list from the regulator in all eight markets and checked every operator the models named against it. Across the eight, <strong>131 named operators</strong> were matched to a licence in the market they were recommended for.</p>
+  <div class="lic">
+    <div class="licbox">
+      <h3>Ontario</h3>
+      <p class="meta">iGaming Ontario · 83 registered domains</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">21 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">888casino</span><span class="chip ok">bet365</span><span class="chip ok">bet99</span><span class="chip ok">betano</span><span class="chip ok">betguard</span><span class="chip ok">betmgm</span><span class="chip ok">betrivers</span><span class="chip ok">betway</span><span class="chip ok">bwin</span><span class="chip ok">draftkings</span><span class="chip ok">fanduel</span><span class="chip ok">firevegas</span></div><p style="font-size:13px;color:var(--ink-3);margin:12px 0 0">Showing 12 of 21.</p>
+    </div>
+    <div class="licbox">
+      <h3>Germany</h3>
+      <p class="meta">GGL whitelist · 186 licensed domains</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">24 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">44-aces</span><span class="chip ok">888poker</span><span class="chip ok">888slots</span><span class="chip ok">admiralbet</span><span class="chip ok">ahtigames</span><span class="chip ok">bacanaplay</span><span class="chip ok">bet-at-home</span><span class="chip ok">betano</span><span class="chip ok">bingbong</span><span class="chip ok">bwin</span><span class="chip ok">casumo</span><span class="chip ok">die-spielbank</span></div><p style="font-size:13px;color:var(--ink-3);margin:12px 0 0">Showing 12 of 24.</p>
+    </div>
+    <div class="licbox">
+      <h3>Malta</h3>
+      <p class="meta">MGA register · 722 licensed brands</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">17 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">888casino</span><span class="chip ok">888sport</span><span class="chip ok">bet365</span><span class="chip ok">betsafe</span><span class="chip ok">betsson</span><span class="chip ok">betway</span><span class="chip ok">bwin</span><span class="chip ok">casiku</span><span class="chip ok">casumo</span><span class="chip ok">ibet</span><span class="chip ok">leovegas</span><span class="chip ok">mozzart</span></div><p style="font-size:13px;color:var(--ink-3);margin:12px 0 0">Showing 12 of 17.</p>
+    </div>
+    <div class="licbox">
+      <h3>Netherlands</h3>
+      <p class="meta">KSA Kansspelwijzer · 40 online brands</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">19 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">bet365</span><span class="chip ok">betmgm</span><span class="chip ok">betnation</span><span class="chip ok">bingoal</span><span class="chip ok">casino777</span><span class="chip ok">circus</span><span class="chip ok">comeon</span><span class="chip ok">getlucky</span><span class="chip ok">ggpoker</span><span class="chip ok">hommerson</span><span class="chip ok">jacks</span><span class="chip ok">kansino</span></div><p style="font-size:13px;color:var(--ink-3);margin:12px 0 0">Showing 12 of 19.</p>
+    </div>
+    <div class="licbox">
+      <h3>Denmark</h3>
+      <p class="meta">Spillemyndigheden · 90 licence holders</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">17 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">25syv</span><span class="chip ok">bet365</span><span class="chip ok">betfair</span><span class="chip ok">betsson</span><span class="chip ok">bwin</span><span class="chip ok">hillside</span><span class="chip ok">leovegas</span><span class="chip ok">loofers</span><span class="chip ok">marathonbet</span><span class="chip ok">omnigame</span><span class="chip ok">pokerstars</span><span class="chip ok">spilhuset</span></div><p style="font-size:13px;color:var(--ink-3);margin:12px 0 0">Showing 12 of 17.</p>
+    </div>
+    <div class="licbox">
+      <h3>United Kingdom</h3>
+      <p class="meta">UKGC public register · checked by name</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">11 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">32red</span><span class="chip ok">bet365</span><span class="chip ok">betfair</span><span class="chip ok">betmgm</span><span class="chip ok">betway</span><span class="chip ok">casumo</span><span class="chip ok">leovegas</span><span class="chip ok">luckymate</span><span class="chip ok">playojo</span><span class="chip ok">stake</span><span class="chip ok">videoslots</span></div>
+    </div>
+    <div class="licbox">
+      <h3>New Jersey</h3>
+      <p class="meta">DGE authorised sites · 35 domains</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">11 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">bet365</span><span class="chip ok">betinia</span><span class="chip ok">betmgm</span><span class="chip ok">betparx</span><span class="chip ok">betrivers</span><span class="chip ok">draftkings</span><span class="chip ok">fanatics</span><span class="chip ok">fanduel</span><span class="chip ok">jackpocket</span><span class="chip ok">playstar</span><span class="chip ok">thescore</span></div>
+    </div>
+    <div class="licbox">
+      <h3>Pennsylvania</h3>
+      <p class="meta">PGCB licensed operators · 25 domains</p>
+      <p style="font-size:14px;color:var(--ink-2);margin:0 0 12px">11 operators named by the models are licensed here:</p>
+      <div class="chips"><span class="chip ok">ballycasino</span><span class="chip ok">bet365</span><span class="chip ok">betmgm</span><span class="chip ok">betparx</span><span class="chip ok">betrivers</span><span class="chip ok">borgataonline</span><span class="chip ok">caesars</span><span class="chip ok">draftkings</span><span class="chip ok">fanduel</span><span class="chip ok">playlive</span><span class="chip ok">playsugarhouse</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Method</h2></div>
+  <div class="prose">
+    <p>Five questions were put to each engine for each jurisdiction, phrased the way a person actually types them rather than as search keywords — for example, <em>“I live in Ontario. Where can I safely play online slots for real money?”</em> Every source the engine reported was recorded, along with the operators it named in the answer text.</p>
+    <p>Licensed-operator lists were pulled directly from the regulators: the iGaming Ontario operator list, the German GGL whitelist and the New Jersey DGE authorised-sites page. Operator names were matched against the registrable root of each licensed domain — so <span style="font-family:var(--mono);font-size:13px">nj.betmgm.com</span> resolves to <span style="font-family:var(--mono);font-size:13px">betmgm</span> — with generic words such as <span style="font-family:var(--mono);font-size:13px">casino</span>, <span style="font-family:var(--mono);font-size:13px">play</span> and <span style="font-family:var(--mono);font-size:13px">slots</span> excluded to avoid false matches.</p>
+  </div>
+  <h3 style="font-family:var(--sans);font-size:15px;font-weight:600;margin:24px 0 10px">Limitations, stated plainly</h3>
+  <ul class="tight">
+    <li>This is a first edition built on <strong>80 answers</strong>. It is large enough to show structure, not to support precise percentages. Treat every figure as indicative.</li>
+    <li>Both engines answered all forty of their questions, so the two are evenly weighted. Google's Gemini was excluded: its search grounding is unavailable on the free tier for new accounts, and an ungrounded answer reports no sources at all.</li>
+    <li>All eight registers were read, but not in the same form. Ontario, Germany, Malta, the Netherlands, New Jersey and Pennsylvania publish licensed <em>domains</em>. Denmark publishes licensed <em>legal entities</em>, so its brands had to be inferred from company names, and the UK register has no downloadable list at all and was queried one brand at a time.</li>
+    <li>Because of that, a brand shown as unlicensed in Denmark may simply be a brand whose company name does not reveal it. Read the Danish column as weaker evidence than the others.</li>
+    <li>Name matching is literal. Where a regulator lists a market-specific domain — New Jersey's <span style="font-family:var(--mono);font-size:13px">pokerstarsnj.com</span> is the clearest case — the brand will not match and shows as unlisted. That is a flaw in our method, not a finding about the operator.</li>
+    <li>Source classification into affiliate, sports, news, regulator and trade press was done by hand and is a judgement call at the margins.</li>
+    <li>Answers vary between runs. A single reading is a snapshot, not a ranking.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="sec-head"><h2>Registers used</h2></div>
+  <div class="srcs">
+    <a href="https://www.gluecksspiel-behoerde.de/de/whitelist">gluecksspiel-behoerde.de/de/whitelist</a>
+    <a href="https://www.njoag.gov/about/divisions-and-offices/division-of-gaming-enforcement-home/internet-gaming-sites/">njoag.gov · DGE internet gaming sites</a>
+    <a href="https://www.agco.ca/en/lottery-and-gaming/list-registered-internet-gaming-operators">agco.ca · registered iGaming operators</a>
+    <a href="https://www.gamblingcommission.gov.uk/public-register">gamblingcommission.gov.uk/public-register</a>
+    <a href="https://www.mga.org.mt/licensee-hub/licensee-register/">mga.org.mt · licensee register</a>
+    <a href="https://gamingcontrolboard.pa.gov/?p=interactive_gaming">gamingcontrolboard.pa.gov · interactive gaming</a>
+    <a href="https://spillemyndigheden.dk/en-us/licensed-gambling-operators">spillemyndigheden.dk · licensed operators</a>
+    <a href="https://kansspelautoriteit.nl/kansspelwijzer">kansspelautoriteit.nl · Kansspelwijzer</a>
+    <a href="https://mgaurlchecker.mga.org.mt/">mgaurlchecker.mga.org.mt · MGA URL checker</a>
+    <a href="https://igamingontario.ca/en/operator/operators">igamingontario.ca · registered operators</a>
+  </div>
+</section>
+
+<footer>
+  <p>AI Casino Citation Index · Edition 01 · collected 30 September 2026 · independent, not affiliated with any operator, affiliate or regulator.</p>
+</footer>
+</div>
+
+<script>
+const TOP=[["gambling.com",18,"affiliate"],["covers.com",17,"sports"],["tribuna.com",17,"sports"],
+["europeangaming.eu",16,"trade"],["nj.com",11,"news"],["sportsline.com",11,"sports"],
+["chipy.com",11,"affiliate"],["lcb.org",9,"affiliate"],["online-gambling.com",8,"affiliate"],
+["freep.com",8,"news"],["mr-gamble.com",8,"affiliate"],["pennlive.com",7,"news"],
+["dimers.com",7,"sports"],["gamblinginsider.com",7,"trade"],["gamblingmaps.org",7,"affiliate"],
+["gadgets360.com",6,"news"],["standard.co.uk",6,"news"],["online-casinos.com",6,"affiliate"],
+["timesofmalta.com",6,"news"],["gluecksspiel-behoerde.de",6,"regulator"]];
+
+const JUR=[
+["United Kingdom","UKGC","Register checked by name",[["standard.co.uk",6,"news"],["gambling.com",6,"affiliate"],["independent.co.uk",5,"news"],["livescore.com",4,"sports"],["racingpost.com",4,"sports"],["thesun.co.uk",4,"news"]]],
+["Germany","GGL","186 licensed domains",[["gluecksspiel-behoerde.de",6,"regulator"],["chipy.com",5,"affiliate"],["tribuna.com",5,"sports"],["mightytips.com",4,"affiliate"],["casino.guru",4,"affiliate"],["europeangaming.eu",4,"trade"]]],
+["Ontario","AGCO / iGO","83 licensed domains",[["covers.com",6,"sports"],["gambling.com",5,"affiliate"],["sportsline.com",5,"sports"],["igamingontario.ca",4,"regulator"],["rg.org",4,"affiliate"],["freep.com",4,"news"]]],
+["Pennsylvania","PGCB","25 licensed domains",[["pennlive.com",7,"news"],["covers.com",5,"sports"],["legalsportsreport.com",4,"sports"],["nj.com",4,"news"],["gamingcontrolboard.pa.gov",3,"regulator"],["bookmakersreview.com",3,"sports"]]],
+["New Jersey","NJ DGE","35 licensed domains",[["nj.com",7,"news"],["covers.com",6,"sports"],["playnj.com",3,"affiliate"],["nj.gov",3,"regulator"],["njoag.gov",3,"regulator"],["sportsline.com",2,"sports"]]],
+["Denmark","Spillemyndigheden","90 licence holders",[["europeangaming.eu",5,"trade"],["spillemyndigheden.dk",5,"regulator"],["tribuna.com",5,"sports"],["wizardofodds.com",4,"affiliate"],["online-gambling.com",4,"affiliate"],["betpack.com",3,"affiliate"]]],
+["Netherlands","KSA","40 online brands",[["europeangaming.eu",6,"trade"],["kansspelautoriteit.nl",5,"regulator"],["mr-gamble.com",4,"affiliate"],["punchng.com",4,"news"],["bookiesbonuses.com",3,"affiliate"],["tribuna.com",3,"sports"]]],
+["Malta","MGA","722 licensed brands",[["timesofmalta.com",6,"news"],["gameshub.com",5,"affiliate"],["gadgets360.com",4,"news"],["tribuna.com",4,"sports"],["askgamblers.com",3,"affiliate"],["mightytips.com",3,"affiliate"]]]];
+
+const col=c=>`var(--c-${c})`;
+const esc=s=>s.replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+
+document.getElementById("ranked").innerHTML = TOP.map(([d,n,c],i)=>`
+  <div class="row">
+    <span class="rank">${i+1}</span>
+    <span class="dom" title="${esc(d)}">${esc(d)}</span>
+    <span class="track"><i style="width:${n/18*100}%;background:${col(c)}"></i></span>
+    <span class="val">${n}</span>
+  </div>`).join("");
+
+document.getElementById("jgrid").innerHTML = JUR.map(([name,reg,note,rows])=>`
+  <article class="jcard">
+    <h3>${esc(name)} <em>${esc(reg)}</em></h3>
+    <p class="reg">${esc(note)}</p>
+    <ul class="jlist">
+      ${rows.map(([d,n,c])=>`<li><span class="dot" style="background:${col(c)}"></span>
+        <span class="d" title="${esc(d)}">${esc(d)}</span><span class="n">${n}</span></li>`).join("")}
+    </ul>
+  </article>`).join("");
+</script>
+
+</body>
+</html>
